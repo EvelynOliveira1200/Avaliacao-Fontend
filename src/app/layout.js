@@ -8,17 +8,19 @@ const font = Roboto ({
 });
 
 export const metadata = {
-    title: "Cosmetics Store",
+    title: "Cosmmetics Store",
     icons: {
-    icon: "/icons/favicon.ico",
+    icon: "/icon/favicon.ico",
   },
-    description: "A cosmetics store built with Next.js",
+    description: "A simple cosmetics store",
+
 };
 
 export default function RootLayout({ children }) {
     return (
-        <html>
+        <html lang="pt-BR">
             <body className={font.variable}>{children}</body>
         </html>
     );
 }
+

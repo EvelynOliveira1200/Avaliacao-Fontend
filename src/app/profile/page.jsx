@@ -5,6 +5,7 @@ import styles from "./Profile.module.css";
 import { Button } from "antd";
 import { Skeleton } from 'antd';
 import { useState, useEffect } from 'react';
+import Link from "next/link";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -44,9 +45,11 @@ export default function Home() {
               </li>
             </ul>
 
-            <Button type="primary" >
-              Clique aqui para acessar Cosmetics Store - API
-            </Button>
+            <Link href="/products">
+              <Button type="primary" >
+                Clique aqui para acessar Cosmetics Store - Front-end
+              </Button>
+            </Link>
           </div>
         </div>
         </Skeleton>
