@@ -10,7 +10,7 @@ const font = Roboto ({
 export const metadata = {
     title: "Cosmmetics Store",
     icons: {
-    icon: "/icon/favicon.ico",
+    icon: "/icons/favicon.ico",
   },
     description: "A simple cosmetics store",
 

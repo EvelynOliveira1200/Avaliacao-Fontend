@@ -7,6 +7,7 @@ import styles from "./Product.module.css";
 import { Skeleton, Card, Modal, Pagination } from 'antd';
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import Header from "../../components/Header";
 
 const HEADERS = {
   "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
@@ -68,17 +69,11 @@ export default function Products() {
   return (
     <main className={styles.main}>
       <Skeleton loading={data.loading} active>
-        <h1 className={styles.title}>Lista de Produtos</h1>
 
-        <Pagination
-          current={data.current}
-          pageSize={data.pageSize}
-          total={data.products.length}
-          onChange={(page, size) =>
-            setData((prev) => ({ ...prev, current: page, pageSize: size }))
-          }
-          showSizeChanger
-          pageSizeOptions={["5", "10", "100"]}
+        <Header
+          src="/images/logo.jpg"
+          alt="Logo"
+          text="Cosmetics Store | Lista de Produtos"
         />
 
         {data.loading ? (
@@ -104,9 +99,12 @@ export default function Products() {
                   <Image
                     alt={product.name}
                     src={
-                      product.photo?.startsWith("http") ||
-                        product.photo?.startsWith("/images")
+                      product.photo?.startsWith("http")
                         ? product.photo
+                        : product.photo?.startsWith("/images")
+                        ? product.photo
+                        : product.photo
+                        ? `http://localhost:3000/uploads/${product.photo}`
                         : "/images/220.svg"
                     }
                     width={220}
@@ -151,6 +149,18 @@ export default function Products() {
             <Skeleton active />
           )}
         </Modal>
+
+        <Pagination
+          current={data.current}
+          pageSize={data.pageSize}
+          total={data.products.length}
+          onChange={(page, size) =>
+            setData((prev) => ({ ...prev, current: page, pageSize: size }))
+          }
+          showSizeChanger
+          pageSizeOptions={["5", "10", "100"]}
+        />
+        
         <ToastContainer position="top-right" autoClose={4500} />
       </Skeleton>
     </main>
